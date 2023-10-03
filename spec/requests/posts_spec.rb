@@ -1,7 +1,47 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
-  describe 'GET /index' do
-    pending "add some examples (or delete) #{__FILE__}"
+  describe 'GET /users/3/posts' do
+    it 'Must render a successful response' do
+      get user_posts_path(3)
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'Must return a 200 OK status' do
+      get '/users/3/posts'
+      expect(response).to have_http_status(200)
+    end
+
+    it 'Must render the index template' do
+      get user_posts_path(3)
+      expect(response).to render_template(:index)
+    end
+
+    it 'Must have a correct placeholder text in the response body' do
+      get user_posts_path(3)
+      expect(response.body).to include('This page contains a list of Posts')
+    end
+  end
+
+  describe 'GET /users/10/posts/2' do
+    it 'Must render a successful response' do
+      get user_posts_path(10, 2)
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'Must return a 200 OK status' do
+      get '/users/10/posts/2'
+      expect(response).to have_http_status(200)
+    end
+
+    it 'Must render the index template' do
+      get '/users/10/posts/2'
+      expect(response).to render_template(:show)
+    end
+
+    it 'Must have a correct placeholder text in the response body' do
+      get '/users/10/posts/2'
+      expect(response.body).to include('A specific post from a list of Posts')
+    end
   end
 end
