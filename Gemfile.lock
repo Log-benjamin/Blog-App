@@ -264,13 +264,11 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  factory_bot_rails (~> 6.0)
+  factory_bot_rails
   importmap-rails
   jbuilder
-  minitest (~> 5.20)
   pg (~> 1.1)
   puma (~> 5.0)
-  racc (= 1.7.1)
   rails (~> 7.0.8)
   rails-controller-testing
   rspec-rails
