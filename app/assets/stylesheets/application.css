@@ -34,6 +34,18 @@ a {
   font-size: 1rem;
 }
 
+.input {
+  padding: 2%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.f-label {
+  display: flex;
+  align-items: flex-start;
+}
+
 a:visited {
   color: inherit;
 }
