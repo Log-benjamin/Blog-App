@@ -13,3 +13,53 @@
  *= require_tree .
  *= require_self
  */
+body {
+  font-family: "Goudy Bookletter 1911", sans-serif;
+  font-size: 12px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+a:visited {
+  color: inherit;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #ccc;
+  margin-top: 1rem;
+  color: rgb(0, 30, 255);
+  cursor: pointer;
+}
+
+.center-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-right {
+  display: flex;
+  flex-direction: row-reverse;
+}
