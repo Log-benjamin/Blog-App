@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts Index Page', type: :system do
-  let!(:user) { User.create(name: 'Sahalu', photo: 'https://makeplaceholder.com?size=100&bg=f4bcae&text=photo&tcolor=ffffff&as=png') }
+  let!(:user) { User.create(name: 'Luigi', photo: 'https://makeplaceholder.com?size=100&bg=f4bcae&text=photo&tcolor=ffffff&as=png') }
   let!(:post1) { user.posts.create(title: 'Sample Post Title', text: 'Sample Post Content') }
   let!(:post2) { user.posts.create(title: 'Sample Post Title', text: 'Sample Post Content') }
 
@@ -12,23 +12,33 @@ RSpec.describe 'Posts Index Page', type: :system do
     Like.create(post: post2, user:)
   end
 
-  describe 'displays user information:' do
-    before { visit user_posts_path(user) }
+  describe 'displays the post information:' do
+    before { visit user_post_path(user, post1) }
 
-    it 'show profile picture of user' do
-      expect(page).to have_css("img[src='#{user.photo}']")
+    it "shows the post's title" do
+      expect(page).to have_css('h3', text: post1.title)
     end
 
-    it 'show the name of user' do
-      expect(page).to have_css('h1', text: user.name)
+    it 'shows who wrote the post' do
+      expect(page).to have_css('span', text: post1.author.name)
     end
 
-    it 'show number of posts of user' do
-      expect(page).to have_content(user.reload.postsCounter)
+    it 'shows how many comments it has' do
+      expect(page).to have_content("Comments: #{post1.commentsCounter}")
+    end
+
+    it 'shows how many likes it has' do
+      expect(page).to have_content("Likes: #{post1.likesCounter}")
+    end
+
+    it 'shows the post body' do
+      expect(page).to have_css('p', text: post1.text)
     end
   end
 
-  describe 'displays all user posts' do
+  describe 'displays all the comments for the posts' do
+    # I can see the username of each commentor.
+    # I can see the comment each commentor left.
     before { visit user_posts_path(user) }
 
     it 'shows the post title' do
@@ -78,7 +88,7 @@ RSpec.describe 'Posts Index Page', type: :system do
 
     it 'redirects to create new post when clicking on create_a_post button' do
       click_link 'Add Post'
-      expect(page).to have_current_path(new_user_post_path(@current_user))
+      expect(page).to have_current_path(new_user_post_path(user))
     end
   end
 end
