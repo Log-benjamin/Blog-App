@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   after_destroy :update_post_counter
 
   validates :title, presence: true, length: { maximum: 250 }
+  validates :text, presence: true
   validates :commentsCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :likesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
