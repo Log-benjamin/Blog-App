@@ -4,10 +4,14 @@ RSpec.feature 'User Show Page' do
   before(:each) do
     @user1 = User.create(name: 'Pikachu', bio: 'Pokemon', photo: 'https://www.pngegg.com/en/png-wgjix',
                          postsCounter: 0)
+    @user2 = User.create(name: 'Meowth', bio: 'Pokemon2', photo: 'https://www.pngegg.com/en/png-sigeb',
+                         postsCounter: 0)
     @post1 = Post.create(author: @user1, title: 'Game 1', text: 'I won')
     @post2 = Post.create(author: @user1, title: 'Game 2', text: 'I lost')
     @post3 = Post.create(author: @user1, title: 'Game 3', text: 'Draw')
-    @post4 = Post.create(author: @user1, title: 'Game 4', text: 'difficult')
+    @post4 = Post.create(author: @user2, title: 'Game 4', text: 'difficult')
+    @post5 = Post.create(author: @user2, title: 'Game 5', text: 'awesome')
+    @post6 = Post.create(author: @user2, title: 'Game 6', text: 'Fire')
   end
   scenario 'I can see the username of the user' do
     visit user_path(@user1)
@@ -39,12 +43,12 @@ RSpec.feature 'User Show Page' do
     expect(page).to have_content('See All Posts')
   end
 
-  scenario 'I can see the last 3 posts of the user' do
+  scenario 'I can see the users first 3 posts.' do
     visit user_path(@user1)
 
+    expect(page).to have_text(@post1.title, wait: 10)
     expect(page).to have_text(@post2.title, wait: 10)
     expect(page).to have_text(@post3.title, wait: 10)
-    expect(page).to have_text(@post4.title, wait: 10)
   end
 
   scenario 'redirects to the post show page when you click on a users post' do
