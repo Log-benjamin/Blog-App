@@ -20,6 +20,8 @@ Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Exclude:
     - db/schema.rb
+    - spec/features/user_index_spec.rb
+    - spec/features/user_show_spec.rb
   Max: 30
 
 
