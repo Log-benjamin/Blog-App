@@ -1,0 +1,47 @@
+<style>
+  body {
+    background-color: #89A5BE;
+    font-family: 'Arial';
+  }
+
+  .col-md-4 {
+    margin-left: 16%;
+    margin-top: 5rem;
+  }
+  .pass_input {
+    width: 200%;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    width: 200%;
+    height: 2.5rem;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    color: black;
+  }
+
+  .lik-sec {
+    width: 200%;
+    margin-top: 2rem;
+  }
+</style>
+
+<div class="container-fluid">
+  <div class="col-md-4">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control pass_input" %>
+            </div>
+            <div class="text-center" style="margin-top: 20px;">
+              <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+          <div class="text-center lik-sec" style="margin-top: 20px; text-decoration: none;">
+            <%= render "devise/shared/links" %>
+          </div>
+    </div>
+</div>
