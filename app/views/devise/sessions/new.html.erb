@@ -1,56 +1,47 @@
 <style>
-  body
-  {
-    background-color:#6abadeba;
+  body {
+    background-color: #89A5BE;
     font-family: 'Arial';
   }
-  .card {
-    width: 100%;
-    overflow: hidden;
-    margin: auto;
-    padding: 3rem;
-    padding-top: 1rem;
-    background: #23463F;
-    border-radius: 15px ;
+
+  .col-md-4 {
+    margin-left: 16%;
+    margin-top: 5rem;
   }
-  h2 {
-    color: white;
+
+  .email_input, .pass_input {
+    width: 200%;
+    margin-bottom: 2rem;
   }
-  label {
-    color: white;
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-  }
-  input {
-    margin-bottom: 0.5rem;
-  }
+  
   .form-check-label {
-    font-size: 1  rem;
+    font-size: 1rem;
+    color: white;
   }
+
   .btn-primary {
-    width: 15rem;
-    height: 3rem;
+    width: 200%;
+    height: 2.5rem;
     border: none;
-    font-size: 1.5rem;
-    border-radius: 17px;
-    padding-left: 7px;
+    font-size: 1.2rem;
+    border-radius: 10px;
     color: black;
   }
+
+  .lik-sec {
+    width: 200%;
+    margin-top: 2rem;
+  }
 </style>
+
 <div class="container-fluid">
-  <div class="row justify-content-center align-items-center">
     <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title text-center">Log in</h2>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
-              <%= f.label :email %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control email_input" %>
             </div>
             <div class="form-group">
-              <%= f.label :password %>
-              <%= f.password_field :password, autocomplete: "current-password", placeholder: "******", class: "form-control" %>
+              <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control pass_input" %>
             </div>
             <% if devise_mapping.rememberable? %>
               <div class="form-group form-check">
@@ -62,11 +53,8 @@
               <%= f.submit "Log in", class: "btn btn-primary" %>
             </div>
           <% end %>
-          <div class="text-center" style="margin-top: 20px;">
+          <div class="text-center lik-sec">
             <%= render "devise/shared/links" %>
           </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
