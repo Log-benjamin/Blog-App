@@ -14,4 +14,19 @@ Rails.application.routes.draw do
       resources :likes, only: %i[new create]
     end
   end
+
+  namespace :api do
+    # do not generate a url/path for the resource with --> %i[none]
+    resources :users, only: %i[none] do
+      # index - to list all posts for a user
+      resources :posts, only: %i[index]
+    end
+
+    # do not generate a url/path for the resource with --> %i[none]
+    resources :posts, only: %i[none] do
+      # index - to list all comments for a post
+      # new/create - to be able to create new comments
+      resources :comments, only: %i[index new create]
+    end
+  end
 end
