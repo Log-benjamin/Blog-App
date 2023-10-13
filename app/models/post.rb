@@ -8,8 +8,8 @@ class Post < ApplicationRecord
   attribute :commentsCounter, :integer, default: 0
   attribute :likesCounter, :integer, default: 0
 
-  after_save :update_post_counter
-  after_destroy :update_post_counter
+  after_save :increase_post_counter
+  after_destroy :decrease_post_counter
 
   validates :title, presence: true, length: { maximum: 250 }
   validates :text, presence: true
@@ -22,7 +22,11 @@ class Post < ApplicationRecord
 
   private
 
-  def update_post_counter
+  def increase_post_counter
     author.increment!(:postsCounter)
+  end
+
+  def decrease_post_counter
+    author.decrement!(:postsCounter)
   end
 end

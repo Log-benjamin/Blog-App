@@ -3,7 +3,10 @@
   <%= render partial: 'shared/user_card', locals: { user: @user } %>
 </a>
 <div class="btn-container">
-  <p class="btn"><%= link_to "Add Post", new_user_post_path %><p>
+  <% if current_user == @user %>
+    <p class="btn"><%= link_to "Add Post", new_user_post_path %><p>
+  <%end%>
+  
 </div>
 <%# post card %>
 <% @posts.each do |post| %>

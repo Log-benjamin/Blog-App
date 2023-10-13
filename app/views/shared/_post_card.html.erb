@@ -7,7 +7,7 @@
   <div class="post-info">
       <p><%= post.text %></p>
       <% if can? :destroy, post %>
-        <%= button_to "Delete", user_post_path(@user, post.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= button_to "Delete", user_post_path(post.author_id, post.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
       <% end %>
       <div class="pull-right">
         <span>Comments: <%= post.commentsCounter %></span>,
