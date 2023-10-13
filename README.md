@@ -8,7 +8,7 @@
 
 ## 📗 Table of Contents
 
-- [Blog App ](#-about-project-)
+- [Blog-App ](#-about-project-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
