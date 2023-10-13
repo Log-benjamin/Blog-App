@@ -8,7 +8,7 @@
 
 ## 📗 Table of Contents
 
-- [Blog App ](#-catalog-)
+- [Blog App ](#-about-project-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -97,6 +97,29 @@ it will install the required gemfile for running the project
 - Twitter: [@twitte](https://twitter.com/@binyam_tegene)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/binyam-tegene-4b77ab265)
 
+👨‍💻 **Luis Zubia**
+
+<ul>
+  <li>
+    <a href="https://github.com/luigirazum">
+    <img align="center" width="18px" src="https://upload.wikimedia.org/wikipedia/commons/2/24/Github_logo_svg.svg" alt="github logo" />
+    <b>@luigirazum</b>
+    </a>
+  </li>
+  <li>
+  <!-- TODO: Change X-Logo source file -->
+    <a href="https://twitter.com/LuigiRazum">
+    <img align="center" width="18px" src="app/assets/images/logos/x-new-logo.svg" alt="" />
+    <b>@LuigiRazum</b>
+    </a>
+  </li>
+  <li>
+    <a href="https://linkedin.com/in/luiszubia">
+    <img align="center" width="18px" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="linkedin logo" />
+    <b>/luiszubia</b>
+    </a>
+  </li>
+</ul>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
