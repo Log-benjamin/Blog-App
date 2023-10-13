@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.includes(posts: :comments).find(params[:user_id])
     @posts = @user.posts.includes(:comments)
@@ -31,6 +33,19 @@ class PostsController < ApplicationController
       flash.now[:error] = 'Oops, something went wrong'
       render :new
     end
+  end
+
+  def destroy
+    @user = current_user
+    @post = Post.find(params[:id])
+    @author = @post.author
+    authorize! :destroy, @post
+    if @post.destroy
+      flash.now[:success] = "Your post titled: '#{@post.title}' was successfully deleted"
+    else
+      flash.now[:error] = 'Oops! Cannot delete your post.'
+    end
+    redirect_to user_posts_path(@author)
   end
 
   private

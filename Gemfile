@@ -85,3 +85,5 @@ gem 'debug', '~> 1.7.1'
 gem 'psych', '~> 5.0.1'
 
 gem 'irb', '~> 1.6.2'
+
+gem 'cancancan'
