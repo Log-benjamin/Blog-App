@@ -14,4 +14,15 @@ Rails.application.routes.draw do
       resources :likes, only: %i[new create]
     end
   end
+
+  delete 'users/:user_id/posts/:id', to: 'posts#destroy', as: 'member'
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index] do
+        resources :posts, only: [:index] do
+          resources :comments, only: %i[index create]
+        end
+      end
+    end
+  end
 end

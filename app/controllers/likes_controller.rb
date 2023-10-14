@@ -1,6 +1,5 @@
 class LikesController < ApplicationController
   before_action :set_post
-
   def new
     @like = Like.new
   end
@@ -9,13 +8,31 @@ class LikesController < ApplicationController
     @like = Like.new
     @like.post = @post
     @like.user = current_user
+    respond_to do |format|
+      if @like.save
+        flash.now[:success] = 'Post liked successfully!'
+        format.html { redirect_to user_post_path(current_user, @post) }
+        format.json { render json: @like, status: :created }
+      else
+        flash.now[:error] = 'Error liking the post.'
+        format.html { redirect_to user_post_path(current_user, @post) }
+        format.json { render json: @like.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-    if @like.save
-      flash[:notice] = 'Like was successfully created.'
-      redirect_to user_post_path(@like.post.author_id, @like.post.id)
-    else
-      flash.now[:error] = 'Oops, something went wrong'
-      render :new
+  def destroy
+    @like = Like.find(params[:id])
+    respond_to do |format|
+      if @like.destroy
+        flash.now[:success] = 'Post unliked successfully.'
+        format.html { redirect_to user_post_path(@like.post.user, @like.post) }
+        format.json { head :no_content }
+      else
+        flash.now[:error] = 'Error unliking the post.'
+        format.html { redirect_to user_post_path(@like.post.user, @like.post) }
+        format.json { render json: @like.errors, status: :unprocessable_entity }
+      end
     end
   end
 
